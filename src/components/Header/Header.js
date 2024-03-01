@@ -6,6 +6,8 @@ import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import Icon from "../Icon";
+import UnstyledButton from "../UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -32,11 +34,18 @@ const Header = () => {
         </Nav>
         <Side />
           <NavIcons>
-              <Icon id="shopping-bag" strokeWidth={1}></Icon>
-              <Icon id="search" strokeWidth={1}></Icon>
-              <Button  onClick={() => setShowMobileMenu(true)}>
-              <Icon id="menu" strokeWidth={1}></Icon>
-              </Button>
+              <UnstyledButton>
+                  <Icon id="shopping-bag" strokeWidth={1}></Icon>
+                  <VisuallyHidden>Shopping Cart</VisuallyHidden>
+              </UnstyledButton>
+              <UnstyledButton>
+                  <Icon id="search" strokeWidth={1}></Icon>
+                  <VisuallyHidden>Search</VisuallyHidden>
+              </UnstyledButton>
+              <UnstyledButton  onClick={() => setShowMobileMenu(true)}>
+                   <Icon id="menu" strokeWidth={1}></Icon>
+                   <VisuallyHidden>Menu</VisuallyHidden>
+              </UnstyledButton>
           </NavIcons>
       </MainHeader>
 
@@ -49,15 +58,22 @@ const Header = () => {
 };
 
 const MainHeader = styled.div`
-  display: flex;
-  align-items: baseline;
-  padding: 18px 32px;
-  height: 72px;
-  border-bottom: 1px solid var(--gray-300);
+    display: flex;
+    align-items: baseline;
+    padding: 18px 32px;
+    height: 72px;
+    border-bottom: 1px solid var(--gray-300);
     overflow-y: auto;
-    
+
     @media ${QUERIES.tabletAndBelow} {
-        border-top: 5px solid ${COLORS.black};
+        border-top: 4px solid black;
+        align-items: center;
+        padding: 24px 30px;
+    }
+    
+    @media ${QUERIES.phoneAndBelow} {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 `;
 
@@ -93,6 +109,10 @@ const NavIcons = styled.div`
     @media ${QUERIES.tabletAndBelow} {
         display: flex;
         gap: 16px;
+    }
+
+    @media ${QUERIES.phoneAndBelow} {
+        gap: 8px;
     }
     `
 
