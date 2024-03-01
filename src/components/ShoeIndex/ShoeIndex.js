@@ -50,7 +50,7 @@ const Wrapper = styled.div`
   align-items: baseline;
   gap: 32px;
 
-  @media ${QUERIES.tabletAndSmaller} {
+  @media ${QUERIES.tabletAndBelow} {
     flex-direction: column-reverse;
     gap: 0;
   }

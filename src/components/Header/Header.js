@@ -34,7 +34,9 @@ const Header = () => {
           <NavIcons>
               <Icon id="shopping-bag" strokeWidth={1}></Icon>
               <Icon id="search" strokeWidth={1}></Icon>
+              <Button  onClick={() => setShowMobileMenu(true)}>
               <Icon id="menu" strokeWidth={1}></Icon>
+              </Button>
           </NavIcons>
       </MainHeader>
 
@@ -92,5 +94,11 @@ const NavIcons = styled.div`
         gap: 16px;
     }
     `
+
+const Button = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+`
 
 export default Header;
