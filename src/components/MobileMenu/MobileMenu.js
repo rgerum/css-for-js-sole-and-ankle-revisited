@@ -36,7 +36,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 
 const MyDialogOverlay = styled(DialogOverlay)`
     position: absolute;
-    background: ${COLORS.white};
+    background: var(--white);
     top: 0;
     left: 0;
     width: 100%;
