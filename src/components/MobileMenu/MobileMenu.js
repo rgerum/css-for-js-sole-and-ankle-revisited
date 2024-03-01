@@ -12,23 +12,24 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
     <MyDialogOverlay isOpen={isOpen} onDismiss={onDismiss}>
         <MyDialogContent>
-      <Close onClick={onDismiss}>
-          <Icon id="close" strokeWidth={1} />
-          <VisuallyHidden>Dismiss menu</VisuallyHidden>
-      </Close>
-      <NavList>
-        <Item href="/sale">Sale</Item>
-        <Item href="/new">New&nbsp;Releases</Item>
-        <Item href="/men">Men</Item>
-        <Item href="/women">Women</Item>
-        <Item href="/kids">Kids</Item>
-        <Item href="/collections">Collections</Item>
-      </NavList>
-      <Footer>
-        <a href="/terms">Terms and Conditions</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/contact">Contact Us</a>
-      </Footer>
+            <Close onClick={onDismiss}>
+              <Icon id="close" strokeWidth={1} />
+              <VisuallyHidden>Dismiss menu</VisuallyHidden>
+            </Close>
+            <Side />
+            <NavList>
+                <Item style={{"--color": "var(--secondary)"}} href="/sale">Sale</Item>
+                <Item href="/new">New&nbsp;Releases</Item>
+                <Item href="/men">Men</Item>
+                <Item href="/women">Women</Item>
+                <Item href="/kids">Kids</Item>
+                <Item href="/collections">Collections</Item>
+            </NavList>
+            <Footer>
+                <FooterLink href="/terms">Terms and Conditions</FooterLink>
+                <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                <FooterLink href="/contact">Contact Us</FooterLink>
+            </Footer>
         </MyDialogContent>
     </MyDialogOverlay>
   );
@@ -36,36 +37,56 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 
 const MyDialogOverlay = styled(DialogOverlay)`
     position: absolute;
-    background: var(--white);
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 `
 
 const MyDialogContent = styled(DialogContent)`
+    position: absolute;
+    right: 0;
     display: flex;
+    background: var(--white);
     flex-direction: column;
-    padding: 16px;
-    height: 100%;    
+    padding: 32px;
+    width: 300px;
+    height: 100%;
 `
 
 const Close = styled(UnstyledButton)`
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 8px;
+    top: 16px;
     padding: 8px;
 `
+
+const Side = styled.div`
+    flex: 1;
+    `
 
 const NavList = styled.nav`
     display: flex;
     flex-direction: column;
+    gap: 24px;
 `
 
 const Footer = styled.footer`
     display: flex;
+    flex-direction: column;
     margin-top: auto;
-    justify-content: space-around;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 32px;
+    flex: 1;
+`
+
+const FooterLink = styled.a`
+    font-size: ${14 / 16}rem;
+    line-height: ${16.44 / 16}rem;
+    color: var(--gray-700);
+    text-decoration: none;
 `
 
 const Item = styled.a`
@@ -73,8 +94,10 @@ const Item = styled.a`
     display: block;
     text-decoration: none;
     font-weight: 600;
-    color: hsl(220deg 3% 20%);
-    line-height: 2;
+    color: var(--color, var(--gray-900));
+    font-size: ${18 / 16}rem;
+    line-height: ${21.13 / 16}rem;
+    text-transform: uppercase;
 `
 
 export default MobileMenu;
