@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import {QUERIES, WEIGHTS} from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -15,6 +15,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
       <MainColumn>
         <Header>
           <Title>Running</Title>
+          <Sorter>
           <Select
             label="Sort"
             value={sortId}
@@ -23,6 +24,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
             <option value="newest">Newest Releases</option>
             <option value="price">Price</option>
           </Select>
+          </Sorter>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
@@ -47,10 +49,20 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+  
+  @media ${QUERIES.tabletAndBelow} {
+      flex-basis: revert;
+      margin-bottom: -48px;
+  }
 `;
 
 const MainColumn = styled.div`
@@ -67,5 +79,12 @@ const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
 `;
+
+const Sorter = styled.div`
+  @media ${QUERIES.phoneAndBelow} {
+    display: none;
+  }  
+}
+`
 
 export default ShoeIndex;
