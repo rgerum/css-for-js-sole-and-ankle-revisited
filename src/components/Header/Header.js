@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import {COLORS, QUERIES, WEIGHTS} from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from "../Icon";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -30,6 +31,11 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side />
+          <NavIcons>
+              <Icon id="shopping-bag" strokeWidth={1}></Icon>
+              <Icon id="search" strokeWidth={1}></Icon>
+              <Icon id="menu" strokeWidth={1}></Icon>
+          </NavIcons>
       </MainHeader>
 
       <MobileMenu
@@ -46,6 +52,10 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+    
+    @media ${QUERIES.tabletAndBelow} {
+        border-top: 5px solid ${COLORS.black};
+    }
 `;
 
 const Nav = styled.nav`
@@ -68,6 +78,19 @@ const NavLink = styled.a`
   &:first-of-type {
     color: ${COLORS.secondary};
   }
+
+    @media ${QUERIES.tabletAndBelow} {
+        display: none;
+    }
 `;
+
+const NavIcons = styled.div`
+    display: none;
+
+    @media ${QUERIES.tabletAndBelow} {
+        display: flex;
+        gap: 16px;
+    }
+    `
 
 export default Header;

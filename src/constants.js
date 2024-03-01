@@ -23,8 +23,8 @@ const BREAKPOINTS = {
   desktopMin: 1500 / 16,
 }
 
-const QUERIES = {
-  'phoneAndBelow': `(max-width: ${BREAKPOINTS.tabletMin}px)`,
-  'tabletAndBelow': `(max-width: ${BREAKPOINTS.laptopMin}px)`,
-  'laptopAndBelow': `(max-width: ${BREAKPOINTS.desktopMin}px)`,
+export const QUERIES = {
+  'phoneAndBelow': `(max-width: ${BREAKPOINTS.tabletMin}rem)`,
+  'tabletAndBelow': `(max-width: ${BREAKPOINTS.laptopMin}rem)`,
+  'laptopAndBelow': `(max-width: ${BREAKPOINTS.desktopMin}rem)`,
 }
